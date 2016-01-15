@@ -67,7 +67,7 @@ class DimacsCnf(object):
         for line in lines:
             c.dis.append(frozenset(map(lambda vn: Variable("v"+vn.strip(" \t\r\n-"), vn[0] == '-'), line.split(" ")[:-1])))
 
-        for i in xrange(1,varz+1):
+        for i in range(1,varz+1):
             stri = str(i)
             vo = Variable('v'+stri)
             self.varname_dict[vo] = stri

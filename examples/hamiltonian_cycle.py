@@ -30,7 +30,7 @@ print "Creating variables..."
 varz = {}
 for n in gnodes:
     varz[n] = []
-    for i in xrange(lennodes):
+    for i in range(lennodes):
         # n, m, position
         varz[n].append(Variable("%d_%d_%d" % (n[0], n[1], i)))
 
@@ -38,13 +38,13 @@ for n in gnodes:
 print "Creating total clauses..."
 for i in gnodes:
     c = Cnf()
-    for j in xrange(lennodes):
+    for j in range(lennodes):
         c |= varz[i][j]
     exp &= c
 
 # Onto
 print "Creating onto clauses..."
-for j in xrange(lennodes):
+for j in range(lennodes):
     c = Cnf()
     for i in gnodes:
         c |= varz[i][j]
@@ -52,7 +52,7 @@ for j in xrange(lennodes):
 
 # 1-1 (X)
 print "Creating 1-1 calues..."
-for j in xrange(lennodes):
+for j in range(lennodes):
     print j
     for i1 in gnodes:
         for i2 in gnodes:
@@ -61,7 +61,7 @@ for j in xrange(lennodes):
 
 # Fn
 print "Creating Fn calues..."
-for i in xrange(lennodes):
+for i in range(lennodes):
     print i
     for j1 in gnodes:
         for j2 in gnodes:
@@ -70,7 +70,7 @@ for i in xrange(lennodes):
 
 # Edge
 print "Adding edge clauses..."
-for j in xrange(lennodes):
+for j in range(lennodes):
     print j
     for i in gnodes:
         for k in gnodes:
@@ -91,7 +91,7 @@ print "Extracting solution..."
 path = []
 for n in g.nodes():
     nodepos = -1
-    for j in xrange(lennodes):
+    for j in range(lennodes):
         if solution[varz[n][j]]:
             nodepos = j
             break
